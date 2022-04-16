@@ -1,0 +1,161 @@
+@import "https://unpkg.com/open-props";
+@import "https://unpkg.com/open-props/normalize.min.css";
+
+:root {
+    --gradient: linear-gradient(
+        45deg,
+        #845ec2,
+        #d65db1,
+        #ff6f91,
+        #ff9671,
+        #ffc75f,
+        #f9f871
+    );
+}
+
+/* Scrolling */
+.media-scroller-wrap {
+    /* position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 300px;
+    border: 1px solid black; */
+    border: 1px solid #333;
+}
+
+.media-scroller-outer {
+    /* position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%; */
+    overflow-x: scroll;
+}
+
+.media-scroller-outer::-webkit-scrollbar {
+    display:  none;
+}
+/* hide scrollbar */
+.media-scroller-outer {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.media-scroller {
+    --_spacer: var(--size-3);
+    display: grid;
+    gap: var(--_spacer);
+    grid-auto-flow: column;
+    grid-auto-columns: 25%;
+
+    padding: var(--_spacer) var(--_spacer);
+
+
+    overscroll-behavior-inline: contain;
+}
+
+/* .media-scroller--with-groups {
+    grid-auto-columns: 100%;
+}
+
+.media-group {
+    display: grid;
+    gap: var(--_spacer);
+    grid-auto-flow: column;
+} */
+
+.media-element {
+    display: grid;
+    grid-template-rows: min-content;
+    gap: var(--size-3);
+    padding: var(--size-3);
+    background: var(--surface-2);
+    border-radius: var(--radius-2);
+    border: 1px solid #333;
+}
+
+.media-element > img {
+    inline-size: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    border: 1px solid #333;
+}
+
+.prog-bar-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #333;
+}
+
+/* .snaps-inline {
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: var(--_spacer, 1rem);
+} */
+
+/* .snaps-inline > * {
+    scroll-snap-align: start;
+} */
+
+
+/* general styling */
+
+.container {
+  inline-size: min(100% - 4rem, 70rem);
+  margin-inline: auto;
+}
+
+.flow {
+  display: grid;
+  gap: var(--size-3);
+}
+
+.page-header {
+  padding-block: var(--size-9);
+  margin-block-end: var(--size-9);
+  background: var(--gradient);
+  background-size: 300%;
+  background-position: left;
+  transition: background-position 1s;
+  color: var(--gray-0);
+  box-shadow: var(--shadow-3);
+  animation: bg-animation 20s infinite alternate-reverse;
+}
+
+.page-header:hover,
+.page-header:focus {
+  background-position: right;
+}
+
+@keyframes bg-animation {
+    0% {background-position: left;}
+    100% {background-position: right;}
+}
+
+.page-title {
+  font-size: var(--font-size-fluid-3);
+}
+
+.page-subtitle {
+  font-size: var(--font-size-fluid-1);
+}
+
+.section-title {
+  padding-inline-start: var(--size-6);
+  margin-block: var(--size-9) var(--size-3);
+  background-image: var(--gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+  background-size: 300%;
+  animation: bg-animation 20s infinite alternate-reverse;
+}
